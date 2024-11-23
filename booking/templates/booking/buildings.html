@@ -1,0 +1,38 @@
+{% extends 'Dashboard/base.html' %}
+
+
+{% block content %}
+
+<!-- Breadcrumbs -->
+<nav aria-label="Page breadcrumb">
+    <ol class="breadcrumb" style="background-color: #f1f1f1;">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">buildings</li>
+    </ol>
+</nav>
+<hr>
+
+
+<div class="row">
+<!-- All Courses -->
+	{% for building in buildings %}
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-dark shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-lg font-weight-bold text-dark mb-1">
+                            <span class="text-primary">Building:</span> {{building.name}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><span class="text-primary">Rooms:</span> {{building.all_rooms}} rooms</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800 mt-4 text-center"><a href="{% url 'get_room' building.id %}"> View all</a></div>
+                    </div>
+                    <div class="col-auto ">
+                        <i class="fa fa-building fa-3x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

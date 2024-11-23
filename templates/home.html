@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block header_content%}
+	{% include '_header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div>
+	Check Your Pdf
+<a href="{% url 'report' %}" class="btn btn-primary">Report</a>
+</div>
+
+{% endblock %}

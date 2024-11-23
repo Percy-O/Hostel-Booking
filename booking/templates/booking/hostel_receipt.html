@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{user.user.name}}</title>
+
+	<style type="text/css">
+	.row, th, td{
+		color: black;
+		font-family: times;
+	}
+	.table-1{
+    		border: 1px dotted #153;
+    		/*border-color: #e9ecef !important;*/
+    		padding: 5px;
+    		font-size: 15px;
+    		font-family: fantasy;
+    		
+    	}
+    p{
+    	font-size: 15px;
+    }
+    .italic{
+    	font-style: italic;
+    }
+
+    h3{
+    		font-size: 25px;
+    		text-align: center;
+    		color: #094b32	;
+    		padding: 0px !important;
+    		/*margin-top: 10px !important;*/
+
+    	}
+    h5{
+    	font-size: 14px;
+    	text-decoration: underline;
+    }
+
+</style>
+</head>
+<body>
+<div class="row">
+	<div class="col-md-2"></div>
+	
+	<div class="col-md-8 bg-white pdf" style="min-height:700px">
+		<div class="pdf">
+	
+		</div>
+		<table style="padding:0px;margin:0px">
+			<tr>
+				<td width="13%"  style="border:1px solid #153">
+					<img src="http://127.0.0.1:8000/static/images/oyscatech.jpeg" width="100" height="100">
+					
+				</td>
+				<td colspan="3" width="87%">
+					<header>
+					<h3>OYO STATE COLLEGE OF AGRICULTURE AND TECHNOLOGY,IGBOORA</h3>
+					<center><p style="font-size: 10px; font-style: italic;padding-top: -14px;" class="oys_mission">INNOVATION,FOOD SUFFICIENCY,SELF EMPLOYMENT</p></center></header>
+				</td>
+			</tr>
+		</table>		
+		<hr>
+			<h5><b>Personal Data:</b></h5>
+			<table class="table table-bordered table-1" >
+
+				<tr>
+					<td width="15%"><b>Full Name:</b></td> <td width="35%">{{user.user.name}}</td>
+					<td width="15%"><b>Gender:</b></td> <td width="15%">{{user.user.gender}}</td>
+					<td rowspan="2" width="20%">
+						<center><img src="http://127.0.0.1:8000{{user.user.avatar.url}}" width="100" height="100"></center>
+					</td>
+				</tr>
+				<tr>
+					<td><b>Email Address: </b></td> <td>{{user.user.email}}</td>
+					<td><b>Phone Number:</b></td> <td>{{user.user.phone_num}}</td>
+				</tr>
+			</table>
+
+
+			<h5><b>Hostel Details:</b></h5>
+			<table class="table table-bordered table-1"> 
+				<tr>
+					<td><b>Building:</b></td> <td>{{user.building.name}}</td>
+					<td ><b>Building Description:</b></td> <td colspan="3">Building with {{user.building.all_rooms}} rooms and {{user.room.all_beds}} beds</td>
+					
+				</tr>
+				<tr>
+					<td><b>Room:</b></td> <td>{{user.room.room_no}}</td>
+					<td><b>No Of Bed:</b></td> <td>{{user.room.all_beds}} Beds</td>
+					<td><b>Bed:</b></td> <td>{{user.bed.bed_no}}</td>
+				</tr>
+			</table>
+
+
+			<table class="" width="100%" style="margin-top:100px">
+				<tr>
+					<center>
+					<td colspan="2" width="50%">
+						<hr style="border-color: black;width: 50%;">
+						<center><p class="text-center font-weight-bold"><b>{{user.user.name}}</b></p>
+						<p class="text-center italic">Student Signature</p></center>
+					</td>
+					<td></td>
+					<td></td>
+					<td colspan="2" width="50%">
+						<hr style="border-color: black;width: 50%;"> 
+						<center><p class="text-center " ><b>Bursary</b></p> 
+							<p class="italic">Bursar Signature</p>
+						</center>
+					</td>
+				</center>
+				</tr>
+			</table>
+
+		
+	</div>
+	<div class="col-md-2"></div>
+</div>
+
+</body>
+</html>

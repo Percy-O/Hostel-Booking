@@ -1,0 +1,93 @@
+{% extends 'Dashboard/base.html' %}
+
+
+{% block content %}
+
+<!-- Breadcrumbs -->
+<nav aria-label="Page breadcrumb">
+    <ol class="breadcrumb" style="background-color: #f1f1f1;">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'building' %}">Buildings</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Rooms</li>
+    </ol>
+</nav>
+<hr>
+
+<div class="row">
+	<div class="col-md-8">
+		<table class="table table-striped">
+			<thead class="thead">
+				<tr class="bg-dark text-white">
+					<th>Building</th>
+					<th>Room No</th>
+					<th>All Beds</th>					
+					<th>Bed Available</th>
+
+					{% if view_bed == False %}
+					<th>Action</th>
+					{% endif %}
+				</tr>
+			</thead>
+
+			<tbody class="tbody">
+				{% for room in rooms %}
+				<tr>
+					<td>
+						{{building.name}}
+					</td>
+					<td>
+						{{room.room_no}}
+					</td>
+					<td> 
+						{{room.all_beds}} Beds
+					</td>
+					<td>
+						{% for bed in room.bed.all %}
+							{{bed.bed_no}},
+						{% endfor %}
+					</td>
+	
+					{% if view_bed == False %}
+					<td><a href="{% url 'get_bed' room.pk %}" class="btn btn-primary">Book Room</a></td>
+					{% endif %} 
+				</tr>
+				{% endfor %}
+			</tbody>
+			
+		</table>
+	</div>
+	{% if view_bed == True %}
+	<div class="col-md-4">
+		<table class="table table-striped">
+			<thead class="thead">
+				<tr>
+					<th>Room</th>
+					<th>Bed No</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+
+			<tbody class="tbody">
+
+				{% for bed in beds %}
+				<tr>
+
+					<td>
+						{{room.room_no}}
+					</td>
+					
+					<td>
+						{{bed.bed_no}}
+					</td>
+					<td><a href="{% url 'bookhostel' bed.pk %}" class="btn btn-primary">Book Bed</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			
+		</table>
+	</div>
+	{% endif %}
+
+</div>
+
+{% endblock content %}

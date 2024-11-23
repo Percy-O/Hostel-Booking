@@ -1,0 +1,47 @@
+{% extends 'Dashboard/base.html' %}
+
+
+{% block content %}
+
+<!-- Breadcrumbs -->
+<nav aria-label="Page breadcrumb">
+    <ol class="breadcrumb" style="background-color: #f1f1f1;">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'building' %}">Buildings</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'building' %}">Room</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Book Hostel</li>
+    </ol>
+</nav>
+<hr>
+
+<div class="row mt-5">
+	<div class="col-md-3"></div>
+	<div class="col-md-6 bg-white py-4 px-4 ">
+		{% include 'includes/messages.html' %}
+		<form action="" method="POST">
+		{% csrf_token %}
+			<div class="form-group">
+				<label for="building">Building:</label>
+				<input type="text" name="building" value="{{building}}" class="form-control">
+				<small class="text-primary">Building Choosen</small>
+			</div>
+
+			<div class="form-group">
+				<label for="room">Room:</label>
+				<input type="text" name="room" value="{{room}}" class="form-control">
+				<small class="text-primary">Room Choosen</small>
+			</div>
+
+			<div class="form-group">
+				<label for="room">Bed:</label>
+				<input type="text" name="bed" value="{{bed}}" class="form-control">
+				<small class="text-primary">Bed Choosen</small>
+			</div>
+
+			<button class="btn btn-primary btn-block">Book Hostel</button>
+		</form>
+	</div>
+	<div class="col-md-3"></div>
+</div>
+
+{% endblock content %}
